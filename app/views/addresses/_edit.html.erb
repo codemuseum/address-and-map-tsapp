@@ -1,0 +1,105 @@
+<%# Takes f, all_addresses -%>
+
+<div class="selector">
+  <%= f.label :id, "Saved Addresses" %>
+  <%= f.select :id, (all_addresses + [["New...", nil]]) %>
+</div>
+
+
+<h2>
+  <%= f.label :name, "Location Name" %>
+  <%= f.text_field :name %>
+</h2>
+
+<div class="info">
+
+  <div class="street-line1 street">
+    <%= f.label :street_line1, "Street (Line 1)" %> <br/>
+    <%= f.text_field :street_line1 %>
+  </div>
+
+  <div class="street-line2 street">
+    <%= f.label :street_line2,  "Street (Line 2)" %> <br/>
+    <%= f.text_field :street_line2 %>
+  </div>
+  
+  <div class="locality">
+    <div class="city">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    
+    <div class="state">
+      <%= f.label :state, "State/Province" %>
+      <%= f.text_field :state %>
+    </div>
+    
+    <div class="zipcode">
+      <%= f.label :zipcode, "Zip" %>
+      <%= f.text_field :zipcode %>
+    </div>
+    
+    <div class="country">
+      <%= f.label :country %>
+      <%= f.country_select :country, ["United States"] %>
+    </div>
+  </div>
+  
+	<div class="location-note note">
+    <div class="hr"><hr /></div>
+    <%= f.label :location_note %>
+    <%= f.text_area :location_note, :rows => 3 %>
+  </div>
+  
+  <div class="timezone-box">
+  	<div class="hr"><hr /></div>
+  	<div class="timezone">
+      <%= f.label :time_zone %>
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
+  	</div>
+  </div>
+  
+
+	<div class="hr"><hr /></div>
+  
+	
+	<div class="email">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+	</div>
+	
+	<div class="phone">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+	</div>
+
+	<div class="fax">
+    <%= f.label :fax %>
+    <%= f.text_field :fax %>
+	</div>
+
+	<div class="website">
+    <div class="hr"><hr /></div>
+  	<div class="link">
+      <%= f.label :link, 'Website' %>
+      <%= f.text_field :link %>
+  	</div>
+	</div>
+
+
+</div>
+
+
+<div class="map">
+  <div class="screen">
+    <iframe src="<%=google_maps_url f.object %>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="map-frame" name="location_and_hours_map_<%= f.object.id %>_frame"></iframe>
+  </div>
+
+  <div class="directions">
+    <a title="View the new location specified in the fields on the map.">&laquo; Refresh Map with Address</a>
+  </div>
+</div>
+
+  
+   
+<div class="clearfix">&nbsp;</div>

@@ -1,0 +1,9 @@
+.app-address-and-map .address h2 {margin:0;padding:0;}
+.app-address-and-map .address .info { float:left; width:440px; }
+.app-address-and-map .address .map { float:right; width:408px; }
+.app-address-and-map .clearfix { clear: both; visibility: hidden; font-size: 1px; line-height: 1px;}
+
+.app-address-and-map .address .map-frame { height:200px; width:400px;}
+.app-address-and-map .address .map .screen {
+padding-bottom: 8px; background: transparent url(/images/shadow-back.gif) right bottom no-repeat; background /**/: transparent url(/images/shadow-back.png) right bottom no-repeat;}
+.app-address-and-map .address .directions {text-align:center;margin-top:5px;}

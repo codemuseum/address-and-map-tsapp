@@ -1,0 +1,81 @@
+<%# address -%>
+<div class="address">
+  <% if !address.blank? -%>
+  <h2><%=h address.name -%></h2>
+
+  <div class="info">
+    <% unless address.street_line1.blank? -%>
+    <div class="street-line1"><%=h address.street_line1 -%></div>
+    <% end -%>
+
+    <% unless address.street_line2.blank? -%>
+    <div class="street-line2"><%=h address.street_line2 -%></div>
+    <% end -%>
+
+    <div class="locality">
+      <% unless address.city.blank? -%>
+      <span class="city"><%=h address.city -%>,</span>
+      <% end -%>
+
+      <span class="state"><%=h address.state -%></span>
+      <span class="zipcode"><%=h address.zipcode -%></span>
+
+      <% if address.country != 'US' && address.country != 'United States' -%>
+      <div class="country"><%=h address.country -%></div>
+      <% end -%>
+    </div>
+  
+    <% unless address.note.blank? %>
+    <div class="note note">
+      <div class="hr"><hr /></div>
+      <%=h address.note -%>
+    </div>
+    <% end %>
+
+    <div class="hr"><hr /></div>
+
+    <% unless address.phone.blank?-%>
+    <div class="phone">
+      <span class="label">Phone:</span>
+      <span class="value"><%=h address.phone -%></span>
+    </div>
+    <% end -%>
+
+    <% unless address.fax.blank? -%>
+    <div class="fax">
+      <span class="label">Fax:</span>
+      <span class="value"><%=h address.fax -%></span>
+    </div>	
+    <% end -%>
+
+    <% unless address.email.blank? -%>
+    <div class="email">
+      <span class="label">Email:</span>
+      <%= obfuscated_mailto(address.email, address.email) -%>
+    </div>
+    <% end -%>
+
+    <% unless address.link.blank? -%>
+    <div class="website">
+      <div class="link">
+        <span class="label">Website:</span>
+        <%=link_to chop_protocol(address.link), address.link %>
+      </div>
+    </div>
+    <% end -%>
+  </div>
+
+  <div class="map<%= address.mappable? ? '' : ' no-map' %>">
+    <div class="screen">
+      <iframe src="<%=google_maps_url address %>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="map-frame" name="location_and_hours_map_<%= address.id %>_frame"></iframe>
+    </div>
+
+    <div class="directions">
+      <a href="<%= location_directions_url(address, address.name) %>" title="View the map on Google, and get directions.">Larger Map &amp; Directions &raquo;</a>
+    </div>
+  </div>
+
+  <div class="clearfix">&nbsp;</div>
+
+  <% end -%>
+</div>

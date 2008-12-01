@@ -1,0 +1,19 @@
+.app-address-and-map .address h2 label {font-weight:normal; display:block; font-size:80%;}
+.app-address-and-map .address h2 input {font-size:120%; font-weight:bold; width:15em;}
+
+.app-address-and-map .address div.street,
+.app-address-and-map .address .locality div {margin:3px 0px;}
+.app-address-and-map .address .city, 
+.app-address-and-map .address .zipcode {float:left; width:49%; }
+.app-address-and-map .address .state, 
+.app-address-and-map .address .country {float:right; width:49%; }
+.app-address-and-map .address .street input,
+.app-address-and-map .address .city input, 
+.app-address-and-map .address .zipcode input,
+.app-address-and-map .address .state input, 
+.app-address-and-map .address .country select {width:95%;}
+
+.app-address-and-map .address .note {clear:left;}
+.app-address-and-map .address .note label {display:block;}
+
+.app-address-and-map a { cursor:pointer; }
