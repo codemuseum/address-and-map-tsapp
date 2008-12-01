@@ -1,10 +1,11 @@
 <%# Takes f, all_addresses -%>
 
+<% if all_addresses.any? %>
 <div class="selector">
-  <%= f.label :id, "Saved Addresses" %>
+  <%= f.label :id, "Saved Address" %>
   <%= f.select :id, (all_addresses + [["New...", nil]]) %>
 </div>
-
+<% end %>
 
 <h2>
   <%= f.label :name, "Location Name" %>
@@ -47,16 +48,8 @@
   
 	<div class="location-note note">
     <div class="hr"><hr /></div>
-    <%= f.label :location_note %>
-    <%= f.text_area :location_note, :rows => 3 %>
-  </div>
-  
-  <div class="timezone-box">
-  	<div class="hr"><hr /></div>
-  	<div class="timezone">
-      <%= f.label :time_zone %>
-      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
-  	</div>
+    <%= f.label :note %>
+    <%= f.text_area :note, :rows => 3 %>
   </div>
   
 

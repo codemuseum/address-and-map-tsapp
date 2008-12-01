@@ -1,0 +1,32 @@
+<div id="map" style="width:100%;height:100%;"></div>
+<div id="address" style="display:none"><%=h @map[:address] %></div>
+<%=link_to 'map', @map[:link_address], :id => 'link', :style => 'display:none' %>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<%= CONFIG_GMAPS_KEY %>" type="text/javascript"></script>
+<script type="text/javascript">//<![CDATA[
+
+function mapLoad() {
+  if (GBrowserIsCompatible()) {
+    geocoder = new GClientGeocoder();
+
+    map = new GMap2(document.getElementById("map"));
+    showAddress(document.getElementById('address').innerHTML, map, "map_element", document.getElementById('link').href);
+    map.addControl(new GSmallZoomControl());
+  }
+}
+
+function showAddress(address, current_map, map_id, map_url) {
+  // console.log("showing: " + address+" .. "+current_map+" .. "+map_id+" .. "+map_url);
+  geocoder.getLatLng(
+    address,
+    function(point) {
+      if (point) {
+        current_map.setCenter(point, 15);
+        var marker = new GMarker(point);
+        current_map.addOverlay(marker);
+        GEvent.addListener(marker, "click", function() { window.parent.location =  map_url; });
+      }
+    }
+  );
+}
+//]]></script>

@@ -23,7 +23,7 @@ var AddressAndMapEdit = {
     iframe.location.replace(
       host + 
       "?a="  + escape(location) + 
-      "&af=" + escape(location + (name.value ? name.value : ''));
+      "&af=" + escape(location + (name.value ? name.value : ''))
     );
   }
 }

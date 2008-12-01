@@ -3,8 +3,6 @@
 
 <div class="address">
 <% fields_for_page_object do |f| %>
-
-
   <% fields_for "#{f.object_name}[assigned_address]", (f.object.address || Address.new) do |af| -%>
     <%= render :partial => 'addresses/edit', :locals => { :f => af, :all_addresses => f.object.all_addresses } %>
   <% end %>

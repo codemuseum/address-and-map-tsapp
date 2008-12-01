@@ -9,7 +9,7 @@ class PageObject < ActiveRecord::Base
   
   
   def validate
-    unless address.valid?
+    if address && address.valid?
       errors.add(:address, " has an error that must be corrected.")
     end
   end

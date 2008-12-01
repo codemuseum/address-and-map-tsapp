@@ -16,3 +16,7 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 config.action_controller.asset_host                  = "http://localhost:3030"
+
+
+CONFIG_GMAPS_KEY = 'ABQIAAAAM1Xg3KS4pBFHn63v6AkVtBSB2LkmXScnrCihIu0RQu_8A71odRQs4_5EeiF6wlP0EaxVr8mtt7zaVQ'
+CONFIG_GMAPS_DOMAIN = 'thrivesmart.localhost:3030'
