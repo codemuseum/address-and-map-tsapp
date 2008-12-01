@@ -9,13 +9,18 @@ class PageObject < ActiveRecord::Base
   
   
   def validate
-    if address && address.valid?
+    if address && !address.valid?
       errors.add(:address, " has an error that must be corrected.")
     end
   end
   
+  def all_addresses_for_form
+    all_addresses.map { |a| [a.name, a.id] }
+  end
+  
+  
   def all_addresses
-    Address.all_for(self.organization_uid).map { |a| [a.name, a.id] }
+    Address.all_for(self.organization_uid)
   end
   
   # Find the right address 

@@ -1,6 +1,15 @@
 var AddressAndMapEdit = {
   init: function() {
-    $$('.app-address-and-map').each(function(el) { 
+    $$('.app-address-and-map').each(function(el) {     
+      var savedForms = el.select('.saved-addresses')[0].remove();
+      
+      el.select('.selector select').each(function(selector) { selector.observe('change', function(ev) {
+        var selectedId = selector.options[selector.selectedIndex].value;
+        var selectedFields = savedForms.select('.hidden-fields.address-fields-' + selectedId)[0];
+        el.select('div.fields')[0].update(selectedFields.innerHTML);
+        AddressAndMapEdit.updateMap(el);
+      }); });
+    
       el.select('.directions a').each(function(a) {
         a.observe('click', function() { AddressAndMapEdit.updateMap(el); });
       });

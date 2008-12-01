@@ -1,0 +1,73 @@
+<%# Takes f -%>
+<h2>
+  <%= f.label :name, "Location Name" %>
+  <%= f.text_field :name %>
+</h2>
+
+<div class="info">
+
+  <div class="street-line1 street">
+    <%= f.label :street_line1, "Street (Line 1)" %> <br/>
+    <%= f.text_field :street_line1 %>
+  </div>
+
+  <div class="street-line2 street">
+    <%= f.label :street_line2,  "Street (Line 2)" %> <br/>
+    <%= f.text_field :street_line2 %>
+  </div>
+  
+  <div class="locality">
+    <div class="city">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    
+    <div class="state">
+      <%= f.label :state, "State/Province" %>
+      <%= f.text_field :state %>
+    </div>
+    
+    <div class="zipcode">
+      <%= f.label :zipcode, "Zip" %>
+      <%= f.text_field :zipcode %>
+    </div>
+    
+    <div class="country">
+      <%= f.label :country %>
+      <%= f.country_select :country, ["United States"] %>
+    </div>
+  </div>
+  
+	<div class="location-note note">
+    <div class="hr"><hr /></div>
+    <%= f.label :note %>
+    <%= f.text_area :note, :rows => 3 %>
+  </div>
+  
+
+	<div class="hr"><hr /></div>
+  
+	
+	<div class="email">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+	</div>
+	
+	<div class="phone">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+	</div>
+
+	<div class="fax">
+    <%= f.label :fax %>
+    <%= f.text_field :fax %>
+	</div>
+
+	<div class="website">
+    <div class="hr"><hr /></div>
+  	<div class="link">
+      <%= f.label :link, 'Website' %>
+      <%= f.text_field :link %>
+  	</div>
+	</div>
+</div>

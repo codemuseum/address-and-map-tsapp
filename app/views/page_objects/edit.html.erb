@@ -1,10 +1,27 @@
 <% stylesheets 'address-and-map', 'address-and-map-edit' -%>
 <% javascripts 'prototype', 'address-and-map-edit' -%>
 
-<div class="address">
 <% fields_for_page_object do |f| %>
+<div class="address">
   <% fields_for "#{f.object_name}[assigned_address]", (f.object.address || Address.new) do |af| -%>
-    <%= render :partial => 'addresses/edit', :locals => { :f => af, :all_addresses => f.object.all_addresses } %>
+    <%= render :partial => 'addresses/edit', :locals => { :f => af, :all_addresses => f.object.all_addresses_for_form } %>
   <% end %>
-<% end %>  
 </div>
+
+<%# for javascript %>
+<div class="saved-addresses" style="display:none">
+  <% f.object.all_addresses.each do |a| %>
+    <div class="hidden-fields address-fields-<%= a.id %>">
+    <% fields_for "#{f.object_name}[assigned_address]", a do |af| -%>
+      <%= render :partial => 'addresses/fields', :locals => { :f => af } %>
+    <% end %>  
+    </div>
+  <% end %>
+  <div class="hidden-fields address-fields-">
+  <% fields_for "#{f.object_name}[assigned_address]", Address.new do |af| -%>
+    <%= render :partial => 'addresses/fields', :locals => { :f => af } %>
+  <% end %>  
+  </div>
+</div>
+
+<% end %>
