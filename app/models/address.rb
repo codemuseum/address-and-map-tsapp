@@ -10,7 +10,25 @@ class Address < ActiveRecord::Base
   before_validation :add_link_protocol
   
   named_scope :all_for, lambda { |org_uid| {
-    :conditions => ['organization_uid = ?', org_uid]
+    :conditions => { :organization_uid => org_uid }
+  } }
+  
+  # Finds a duplicate address in the current org - all values exactly the same.  They obviously meant to use this.
+  named_scope :duplicate_for, lambda { |org_uid, hash| {
+    :conditions => { :organization_uid => org_uid,
+      :name => hash[:name],
+      :street_line1 => hash[:street_line1],
+      :street_line2 => hash[:street_line2],
+      :city => hash[:city],
+      :state => hash[:state],
+      :country => hash[:country],
+      :zipcode => hash[:zipcode],
+      :email => hash[:email],
+      :phone => hash[:phone],
+      :fax => hash[:fax],
+      :link => hash[:link],
+      :note => hash[:note]
+    }
   } }
   
   def self.new_for_organization(org_uid, attrs = {})

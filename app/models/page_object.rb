@@ -23,9 +23,16 @@ class PageObject < ActiveRecord::Base
     Address.all_for(self.organization_uid)
   end
   
-  # Find the right address 
+  # Find the right address, allowing for the possibility there might be a carbon copy duplicate that doesn't have an ID (data migration)
   def assigned_address=(h)
-    self.address = !h[:id].blank? ? Address.all_for(self.organization_uid).find(h[:id].to_i) : Address.new_for_organization(self.organization_uid)
+    if h[:id].blank?
+      self.address = Address.all_for(self.organization_uid).find(h[:id].to_i)
+    elsif (dup = Address.duplicate_for(self.organization_uid, h).first)
+      self.address = dup
+    else
+      self.address = Address.new_for_organization(self.organization_uid)
+    end
+    self.address = !h[:id].blank? ?  : 
     self.address.attributes = h
   end
   
