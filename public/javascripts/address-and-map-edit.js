@@ -7,6 +7,9 @@ var AddressAndMapEdit = {
         var selectedId = selector.options[selector.selectedIndex].value;
         var selectedFields = savedForms.select('.hidden-fields.address-fields-' + selectedId)[0];
         el.select('div.fields')[0].update(selectedFields.innerHTML);
+        if (selector.options[selector.selectedIndex].innerHTML == '-None Yet-') { el.select('div.address-details')[0].addClassName('hidden'); }
+        else { el.select('div.address-details')[0].removeClassName('hidden'); }
+        el.select('input')[0].focus();
         AddressAndMapEdit.updateMap(el);
       }); });
     

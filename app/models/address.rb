@@ -51,6 +51,10 @@ class Address < ActiveRecord::Base
         !link.blank?)
   end
   
+  def new_and_blank?
+    new_record? && blank?
+  end
+  
   def mappable?
     !city.blank? || !state.blank? || !zipcode.blank?
   end

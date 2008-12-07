@@ -2,26 +2,27 @@
 
 <% if all_addresses.any? %>
 <div class="selector">
-  <%= f.label :id, "Saved Address" %>
-  <%= f.select :id, (all_addresses + [["New...", nil]]) %>
+  <%= f.label :id, "Specify Address" %>
+  <%= f.select :id, (all_addresses + [["New...", nil], ['-None Yet-', nil]]) %>
 </div>
 <% end %>
 
-<div class="fields">
-  <%= render :partial => 'addresses/fields', :locals => { :f => f } %>
-</div>
-
-
-<div class="map">
-  <div class="screen">
-    <iframe src="<%=google_maps_url f.object %>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="map-frame" name="location_and_hours_map_<%= f.object.id %>_frame"></iframe>
+<div class="address-details<%= ' hidden' if f.object.id.nil? %>">
+  <div class="fields">
+    <%= render :partial => 'addresses/fields', :locals => { :f => f } %>
   </div>
 
-  <div class="directions">
-    <a title="View the new location specified in the fields on the map.">&laquo; Refresh Map with Address</a>
+
+  <div class="map">
+    <div class="screen">
+      <iframe src="<%=google_maps_url f.object %>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="map-frame" name="location_and_hours_map_<%= f.object.id %>_frame"></iframe>
+    </div>
+
+    <div class="directions">
+      <a title="View the new location specified in the fields on the map.">&laquo; Refresh Map with Address</a>
+    </div>
   </div>
 </div>
-
   
    
 <div class="clearfix">&nbsp;</div>
