@@ -5,5 +5,5 @@
 
 .app-address-and-map .address .map-frame { height:200px; width:400px;}
 .app-address-and-map .address .map .screen {
-padding-bottom: 8px; background: transparent url(/images/shadow-back.gif) right bottom no-repeat; background /**/: transparent url(/images/shadow-back.png) right bottom no-repeat;}
+padding-bottom: 8px; background: transparent url(/address-and-map/images/shadow-back.gif) right bottom no-repeat; background /**/: transparent url(/address-and-map/images/shadow-back.png) right bottom no-repeat;}
 .app-address-and-map .address .directions {text-align:center;margin-top:5px;}
